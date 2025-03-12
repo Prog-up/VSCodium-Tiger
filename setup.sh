@@ -8,7 +8,9 @@ rm cpptools-linux-x64.vsix
 codium --install-extension actboy168.tasks
 codium --install-extension eamodio.gitlens
 codium --install-extension gruntfuggly.todo-tree
-codium --install-extension dizy.lex-flex-yacc-bison
+wget https://github.com/babyraging/yash/releases/download/v0.3.0/yash-0.3.0.vsix
+codium --install-extension yash-0.3.0.vsix
+rm yash-0.3.0.vsix
 
 # Clone the repo
 rm -rf tiger
