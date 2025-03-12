@@ -11,6 +11,7 @@ codium --install-extension eamodio.gitlens
 codium --install-extension gruntfuggly.todo-tree
 
 # Clone the repo
+rm -rf tiger
 git clone $USER@git.forge.epita.fr:p/epita-ing-assistants-yaka/tiger-2027/epita-ing-assistants-yaka-tiger-2027-inscription-rennes-11.git tiger
 
 # Setup tasks
@@ -123,6 +124,7 @@ echo "{
 " >tiger/.vscode/tasks.json
 
 # Configure the settings and theme
+rm -rf ~/.config/VSCodium
 mkdir -p ~/.config/VSCodium/User
 echo "{
     \"window.customTitleBarVisibility\": \"windowed\",
