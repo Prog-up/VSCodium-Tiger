@@ -8,6 +8,7 @@ rm cpptools-linux-x64.vsix
 codium --install-extension actboy168.tasks
 codium --install-extension eamodio.gitlens
 codium --install-extension gruntfuggly.todo-tree
+codium --install-extension dizy.lex-flex-yacc-bison
 
 # Clone the repo
 rm -rf tiger
@@ -98,7 +99,10 @@ echo "{
     \"window.titleBarStyle\": \"custom\",
     \"files.insertFinalNewline\": true,
     \"files.autoSave\": \"afterDelay\",
-    \"editor.formatOnSave\": true
+    \"editor.formatOnSave\": true,
+    \"files.associations\": {
+        \"*.ll\": \"lex\"
+    }
 }" >~/.config/VSCodium/User/settings.json
 
 # Open the project
