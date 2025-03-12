@@ -24,7 +24,10 @@ echo "{
             \"type\": \"shell\",
             \"command\": \"nix\",
             \"args\": [
-                \"run nixpkgs#nixVersions.nix_2_25 develop\",
+                \"run\",
+                \"nixpkgs#nixVersions.nix_2_25\",
+                \"--\",
+                \"develop\",
                 \"--command\",
                 \"sh\",
                 \"-c\",
@@ -41,8 +44,13 @@ echo "{
             \"type\": \"shell\",
             \"command\": \"nix\",
             \"args\": [
-                \"run nixpkgs#nixVersions.nix_2_25 develop\",
+                \"run\",
+                \"nixpkgs#nixVersions.nix_2_25\",
+                \"--\",
+                \"develop\",
                 \"--command\",
+                \"sh\",
+                \"-c\",
                 \"make\",
                 \"check\",
                 \"-j\",
@@ -59,10 +67,16 @@ echo "{
             \"type\": \"shell\",
             \"command\": \"nix\",
             \"args\": [
-                \"run nixpkgs#nixVersions.nix_2_25 develop\",
+                \"run\",
+                \"nixpkgs#nixVersions.nix_2_25\",
+                \"--\",
+                \"develop\",
                 \"--command\",
+                \"sh\",
+                \"-c\",
                 \"make\",
-                \"-j8\"
+                \"-j\",
+                \"8\"
             ],
             \"group\": {
                 \"kind\": \"build\",
@@ -75,7 +89,10 @@ echo "{
             \"type\": \"shell\",
             \"command\": \"nix\",
             \"args\": [
-                \"run nixpkgs#nixVersions.nix_2_25 develop\",
+                \"run\",
+                \"nixpkgs#nixVersions.nix_2_25\",
+                \"--\",
+                \"develop\",
                 \"--command\",
                 \"sh\",
                 \"-c\",
