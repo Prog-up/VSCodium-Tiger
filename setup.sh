@@ -118,9 +118,7 @@ echo "{
     \"window.titleBarStyle\": \"custom\",
     \"files.insertFinalNewline\": true,
     \"files.autoSave\": \"afterDelay\",
-    \"editor.formatOnSave\": true,
-    \"files.associations\": {
-        \"*.ll\": \"lex\"
+    \"editor.formatOnSave\": true
     }
 }" >~/.config/VSCodium/User/settings.json
 
