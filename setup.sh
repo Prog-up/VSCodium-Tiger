@@ -6,7 +6,6 @@ wget https://github.com/microsoft/vscode-cpptools/releases/download/v1.23.6/cppt
 codium --install-extension cpptools-linux-x64.vsix
 rm cpptools-linux-x64.vsix
 codium --install-extension actboy168.tasks
-codium --install-extension enkia.tokyo-night
 codium --install-extension eamodio.gitlens
 codium --install-extension gruntfuggly.todo-tree
 
@@ -99,8 +98,7 @@ echo "{
     \"window.titleBarStyle\": \"custom\",
     \"files.insertFinalNewline\": true,
     \"files.autoSave\": \"afterDelay\",
-    \"editor.formatOnSave\": true,
-    \"workbench.colorTheme\": \"Tokyo Night\"
+    \"editor.formatOnSave\": true
 }" >~/.config/VSCodium/User/settings.json
 
 # Open the project
