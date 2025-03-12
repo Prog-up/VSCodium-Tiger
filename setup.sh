@@ -79,39 +79,7 @@ echo "{
                 \"--command\",
                 \"sh\",
                 \"-c\",
-                \"make distclean;
-                rm -rf Makefile 
-                    configure 
-                    libtool 
-                    config.log 
-                    config.status 
-                    autom4te.cache 
-                    *.o; 
-                    Makefile.in 
-                    **/Makefile.in 
-                    **/**/Makefile.in 
-                    config.h.in~
-                    build-aux/config.guess
-                    build-aux/config.sub
-                    build-aux/install-sh~
-                    build-aux/ltmain.sh
-                    build-aux/m4/libtool.m4
-                    build-aux/m4/ltoptions.m4
-                    build-aux/m4/ltsugar.m4
-                    build-aux/m4/ltversion.m4
-                    build-aux/m4/lt~obsolete.m4
-                    build-aux/py-compile
-                    config.h.in~
-                    src/parse/location.hh
-                    src/parse/parsetiger.cc
-                    src/parse/parsetiger.hh
-                    src/parse/parsetiger.html
-                    src/parse/parsetiger.output
-                    src/parse/parsetiger.stamp
-                    src/parse/parsetiger.xml
-                    src/parse/scantiger.cc
-                    src/parse/scantiger.hh
-                \"
+                \"make distclean;rm -rf Makefile.in aclocal.m4 autom4te.cache/ build-aux/config.guess build-aux/config.sub build-aux/depcomp build-aux/install-sh build-aux/install-sh~ build-aux/ltmain.sh build-aux/m4/libtool.m4 build-aux/m4/ltoptions.m4 build-aux/m4/ltsugar.m4 build-aux/m4/ltversion.m4 build-aux/m4/lt~obsolete.m4 build-aux/missing build-aux/py-compile config.h.in configure src/parse/location.hh src/parse/parsetiger.cc src/parse/parsetiger.hh src/parse/parsetiger.html src/parse/parsetiger.output src/parse/parsetiger.stamp src/parse/parsetiger.xml src/parse/scantiger.cc src/parse/scantiger.hh tcsh/Makefile.in tcsh/python/Makefile.in tcsh/python/swig.mk tests/Makefile.in\"
             ],
             \"group\": {
                 \"kind\": \"build\",
@@ -138,6 +106,7 @@ echo "{
 # Open the project
 codium tiger
 
-echo "Tiger setup succesfully installed, VSCodium is about to start automatically,
+echo "
+Tiger setup succesfully installed, VSCodium is about to start automatically,
 you will find 4 custom buttons for the Tiger Project on the bottom bar.
 You can launch anytime VSCodium with the \`codium\` command (not code)."
