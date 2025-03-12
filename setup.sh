@@ -55,7 +55,7 @@ echo "{
             \"problemMatcher\": []
         },
         {
-            \"label\": \"Tiger: make\",
+            \"label\": \"Tiger: build\",
             \"type\": \"shell\",
             \"command\": \"nix\",
             \"args\": [
