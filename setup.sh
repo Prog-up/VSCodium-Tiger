@@ -24,7 +24,7 @@ echo "{
             \"type\": \"shell\",
             \"command\": \"nix\",
             \"args\": [
-                \"develop\",
+                \"run nixpkgs#nixVersions.nix_2_25 develop\",
                 \"--command\",
                 \"sh\",
                 \"-c\",
@@ -41,7 +41,7 @@ echo "{
             \"type\": \"shell\",
             \"command\": \"nix\",
             \"args\": [
-                \"develop\",
+                \"run nixpkgs#nixVersions.nix_2_25 develop\",
                 \"--command\",
                 \"make\",
                 \"check\",
@@ -59,7 +59,7 @@ echo "{
             \"type\": \"shell\",
             \"command\": \"nix\",
             \"args\": [
-                \"develop\",
+                \"run nixpkgs#nixVersions.nix_2_25 develop\",
                 \"--command\",
                 \"make\",
                 \"-j8\"
@@ -75,7 +75,7 @@ echo "{
             \"type\": \"shell\",
             \"command\": \"nix\",
             \"args\": [
-                \"develop\",
+                \"run nixpkgs#nixVersions.nix_2_25 develop\",
                 \"--command\",
                 \"sh\",
                 \"-c\",
