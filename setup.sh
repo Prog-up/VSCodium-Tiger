@@ -1,20 +1,32 @@
 #!/bin/bash
 
 # Install VS Code and extensions
-nix profile install nixpkgs#vscodium
-wget https://github.com/microsoft/vscode-cpptools/releases/download/v1.23.6/cpptools-linux-x64.vsix
-codium --install-extension cpptools-linux-x64.vsix
-rm cpptools-linux-x64.vsix
-codium --install-extension actboy168.tasks
-codium --install-extension eamodio.gitlens
-codium --install-extension gruntfuggly.todo-tree
-wget https://github.com/babyraging/yash/releases/download/v0.3.0/yash-0.3.0.vsix
-codium --install-extension yash-0.3.0.vsix
-rm yash-0.3.0.vsix
+if [ -f /etc/NIXOS ] || grep -q "nixos" /etc/os-release 2>/dev/null; then
+    nix profile install nixpkgs#vscodium
+fi
+
+if command -v codium &>/dev/null; then
+    wget https://github.com/microsoft/vscode-cpptools/releases/download/v1.23.6/cpptools-linux-x64.vsix
+    codium --install-extension cpptools-linux-x64.vsix
+    rm cpptools-linux-x64.vsix
+    codium --install-extension actboy168.tasks
+    codium --install-extension eamodio.gitlens
+    codium --install-extension gruntfuggly.todo-tree
+    codium --install-extension luozhihao.call-graph
+    wget https://github.com/babyraging/yash/releases/download/v0.3.0/yash-0.3.0.vsix
+    codium --install-extension yash-0.3.0.vsix
+    rm yash-0.3.0.vsix
+else
+    echo "
+    VS Codium isn't installed.
+    Please install VS Codium on your computeur then rerun this script"
+    exit()
+fi
 
 # Clone the repo
-rm -rf tiger
-git clone $USER@git.forge.epita.fr:p/epita-ing-assistants-yaka/tiger-2027/epita-ing-assistants-yaka-tiger-2027-inscription-rennes-11.git tiger
+if [ ! -f "tiger" ]
+    git clone -b dev $USER@git.forge.epita.fr:p/epita-ing-assistants-yaka/tiger-2027/epita-ing-assistants-yaka-tiger-2027-inscription-rennes-11.git tiger
+fi
 
 # Setup tasks
 mkdir tiger/.vscode
@@ -131,7 +143,7 @@ echo "{
 " >tiger/.vscode/tasks.json
 
 # Configure the settings and theme
-rm -rf ~/.config/VSCodium
+if [ ! -f ~/.config/VSCodium/User ]; then
 mkdir -p ~/.config/VSCodium/User
 echo "{
     \"window.customTitleBarVisibility\": \"windowed\",
@@ -141,6 +153,7 @@ echo "{
     \"editor.formatOnSave\": true
     }
 }" >~/.config/VSCodium/User/settings.json
+fi
 
 # Open the project
 codium tiger
