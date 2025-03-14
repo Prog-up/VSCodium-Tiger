@@ -24,7 +24,7 @@ else
 fi
 
 # Clone the repo
-if [ ! -f "tiger" ]
+if [ ! -f "tiger" ]; then
     git clone -b dev $USER@git.forge.epita.fr:p/epita-ing-assistants-yaka/tiger-2027/epita-ing-assistants-yaka-tiger-2027-inscription-rennes-11.git tiger
 fi
 
@@ -144,15 +144,15 @@ echo "{
 
 # Configure the settings and theme
 if [ ! -f ~/.config/VSCodium/User ]; then
-mkdir -p ~/.config/VSCodium/User
-echo "{
-    \"window.customTitleBarVisibility\": \"windowed\",
-    \"window.titleBarStyle\": \"custom\",
-    \"files.insertFinalNewline\": true,
-    \"files.autoSave\": \"afterDelay\",
-    \"editor.formatOnSave\": true
-    }
-}" >~/.config/VSCodium/User/settings.json
+    mkdir -p ~/.config/VSCodium/User
+    echo "{
+        \"window.customTitleBarVisibility\": \"windowed\",
+        \"window.titleBarStyle\": \"custom\",
+        \"files.insertFinalNewline\": true,
+        \"files.autoSave\": \"afterDelay\",
+        \"editor.formatOnSave\": true
+        }
+    }" >~/.config/VSCodium/User/settings.json
 fi
 
 # Open the project
