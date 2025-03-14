@@ -20,7 +20,7 @@ else
     echo "
     VS Codium isn't installed.
     Please install VS Codium on your computeur then rerun this script"
-    exit()
+    exit 1
 fi
 
 # Clone the repo
