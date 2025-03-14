@@ -65,6 +65,26 @@ echo "{
             \"problemMatcher\": []
         },
         {
+            \"label\": \"Tiger: counterexample\",
+            \"type\": \"shell\",
+            \"command\": \"nix\",
+            \"args\": [
+                \"run\",
+                \"nixpkgs#nixVersions.nix_2_25\",
+                \"--\",
+                \"develop\",
+                \"--command\",
+                \"sh\",
+                \"-c\",
+                \"bison -Wcounterexamples src/parse/parsetiger.yy\"
+            ],
+            \"group\": {
+                \"kind\": \"test\",
+                \"isDefault\": true
+            },
+            \"problemMatcher\": []
+        },
+        {
             \"label\": \"Tiger: build\",
             \"type\": \"shell\",
             \"command\": \"nix\",
