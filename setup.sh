@@ -77,7 +77,7 @@ echo "{
             \"problemMatcher\": []
         },
         {
-            \"label\": \"Tiger: counterexample\",
+            \"label\": \"Tiger: conflict\",
             \"type\": \"shell\",
             \"command\": \"nix\",
             \"args\": [
