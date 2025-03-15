@@ -150,8 +150,10 @@ if [ ! -f ~/.config/VSCodium/User ]; then
         \"window.titleBarStyle\": \"custom\",
         \"files.insertFinalNewline\": true,
         \"files.autoSave\": \"afterDelay\",
-        \"editor.formatOnSave\": true
-        }
+        \"editor.formatOnSave\": true,
+        \"files.associations\": {
+            \"*.ll\": \"lex\"
+        },
     }" >~/.config/VSCodium/User/settings.json
 fi
 
