@@ -3,6 +3,13 @@
 # Install VS Code and extensions
 if [ -f /etc/NIXOS ] || grep -q "nixos" /etc/os-release 2>/dev/null; then
     nix profile install nixpkgs#vscodium
+elif command -v apt >/dev/null 2>&1; then
+    wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg |
+        gpg --dearmor |
+        sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+    echo 'deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' |
+        sudo tee /etc/apt/sources.list.d/vscodium.list
+    sudo apt update && sudo apt install codium
 fi
 
 if command -v codium &>/dev/null; then
@@ -29,6 +36,7 @@ if [ ! -f "tiger" ]; then
 fi
 
 # Setup tasks
+rm -rf tiger/.vscode
 mkdir tiger/.vscode
 echo "{
     \"version\": \"2.0.0\",
