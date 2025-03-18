@@ -54,8 +54,6 @@ echo "{
                 \"--\",
                 \"develop\",
                 \"--command\",
-                \"sh\",
-                \"-c\",
                 \"make\",
                 \"check\",
                 \"-j\",
@@ -97,8 +95,6 @@ echo "{
                 \"--\",
                 \"develop\",
                 \"--command\",
-                \"sh\",
-                \"-c\",
                 \"make\",
                 \"-j\",
                 \"8\"
