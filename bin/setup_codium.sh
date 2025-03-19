@@ -30,7 +30,7 @@ echo -e "${GREEN}=> VS Codium user side configuration done${RESET}"
 
 # Install VS Code project dotfiles
 rm -rf ~/tiger-git/.vscode/
-cp -r "$CONFIG_DIR".vscode/ ~/tiger-git/
+cp -r "$CONFIG_DIR".vscode ~/tiger-git/
 
 echo -e "${GREEN}=> VS Codium project side configuration done${RESET}"
 
