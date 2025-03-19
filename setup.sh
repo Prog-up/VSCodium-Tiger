@@ -15,7 +15,7 @@ for script in "$SCRIPT_DIR/bin/"*.sh; do
 done
 
 # Open the project
-codium tiger
+codium ~/tiger-git
 
 echo -e "${GREEN}
 Tiger setup succesfully installed, VSCodium is about to start automatically,
