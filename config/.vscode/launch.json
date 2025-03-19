@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Tiger: execute",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "Tiger: build",
+            "program": "${workspaceFolder}/src/tc",
+            "args": [
+                "-XA",
+                "--parse",
+                "${workspaceFolder}/input.tig"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for GDB",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "externalConsole": true
+        }
+    ]
+}
