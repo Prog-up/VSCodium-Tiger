@@ -1,6 +1,5 @@
 #!/bin/bash
 
-TEST_FOLDERS=($(find "tests" -type f -name "README.txt" -exec dirname {} \;))
 OUTPUT_FILE="output.tig"
 RED='\033[31m'
 GREEN='\033[32m'
@@ -10,7 +9,39 @@ RESET='\033[0m'
 PASSED=0
 FAILED=0
 
+# TODO: Enable once TC-3 finished
+
+# Others
+# TEST_FILES=($(find "tests/others" -type f -name "*.tig"))
+
+# for TEST in "${TEST_FILES[@]}"; do
+#     FLAGS=$(grep -o '/\* flags: .*return: [0-9]* \*/' "$TEST" | sed -E 's/\/\* flags: (.*) return: [0-9]* \*\//\1/')
+#     # echo $FLAGS
+#     EXPECTED_EXIT_CODE=$(grep -o '/\* flags: .*return: [0-9]* \*/' "$TEST" | sed -E 's/\/\* flags: .* return: ([0-9]*) \*\//\1/')
+#     # echo $EXPECTED_EXIT_CODE
+
+#     ./build/src/tc $FLAGS "$TEST" > "$OUTPUT_FILE" 2>&1
+#     ACTUAL_EXIT_CODE=$?
+
+#     if [ "$ACTUAL_EXIT_CODE" -eq "$EXPECTED_EXIT_CODE" ]; then
+#         ((PASSED++))
+#     else
+#         ((FAILED++))
+#         echo "--------------------------------------"
+#         echo -e "${RED}Test failed: $TEST${RESET}"
+#         echo -e "${BLUE}Source Code:${RESET}"
+#         cat "$TEST"
+#         echo -e "${RED}Expected exit code: $EXPECTED_EXIT_CODE, but got: $ACTUAL_EXIT_CODE${RESET}"
+#         echo -e "${RED}Error Message:${RESET}"
+#         cat "$OUTPUT_FILE"
+#     fi
+# done
+
+# Tests folders with readme
+TEST_FOLDERS=($(find "tests" -type f -name "README.txt" -exec dirname {} \;))
+
 for FOLDER in "${TEST_FOLDERS[@]}"; do
+
     EXPECTED_EXIT_CODE=$(cat "$FOLDER/README.txt" | tr -d '[:space:]')
 
     if ! [[ "$EXPECTED_EXIT_CODE" =~ ^[0-9]+$ ]]; then
@@ -22,13 +53,19 @@ for FOLDER in "${TEST_FOLDERS[@]}"; do
     TEST_FILES=($(find "$FOLDER" -type f -name "*.tig"))
 
     for TEST in "${TEST_FILES[@]}"; do
-        ./build/src/tc -X --parse "$TEST" > "$OUTPUT_FILE" 2>&1
+        if [ "$EXPECTED_EXIT_CODE" -eq 4 ]; then
+            ./build/src/tc -b "$TEST" >"$OUTPUT_FILE" 2>&1
+        elif [ "$EXPECTED_EXIT_CODE" -eq 5 ]; then
+            ./build/src/tc -T "$TEST" >"$OUTPUT_FILE" 2>&1
+        else
+            ./build/src/tc -X "$TEST" >"$OUTPUT_FILE" 2>&1
+        fi
         ACTUAL_EXIT_CODE=$?
 
         if [ "$ACTUAL_EXIT_CODE" -eq "$EXPECTED_EXIT_CODE" ]; then
             if [ "$ACTUAL_EXIT_CODE" -eq 0 ]; then
-                if ./build/src/tc -X --parse - < "$OUTPUT_FILE" > /dev/null 2>&1; then
-                ((PASSED++))
+                if ./build/src/tc -X --parse - <"$OUTPUT_FILE" >/dev/null 2>&1; then
+                    ((PASSED++))
                 else
                     ((FAILED++))
                     echo "--------------------------------------"
@@ -36,7 +73,7 @@ for FOLDER in "${TEST_FOLDERS[@]}"; do
                     echo -e "${BLUE}Source Code:${RESET}"
                     cat "$TEST"
                     echo -e "${RED}Error Message:${RESET}"
-                    ./build/src/tc -X --parse - < "$OUTPUT_FILE"
+                    ./build/src/tc -X --parse - <"$OUTPUT_FILE"
                 fi
             else
                 ((PASSED++))
