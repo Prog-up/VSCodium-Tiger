@@ -12,30 +12,30 @@ FAILED=0
 # TODO: Enable once TC-3 finished
 
 # Others
-# TEST_FILES=($(find "tests/others" -type f -name "*.tig"))
+TEST_FILES=($(find "tests/others" -type f -name "*.tig"))
 
-# for TEST in "${TEST_FILES[@]}"; do
-#     FLAGS=$(grep -o '/\* flags: .*return: [0-9]* \*/' "$TEST" | sed -E 's/\/\* flags: (.*) return: [0-9]* \*\//\1/')
-#     # echo $FLAGS
-#     EXPECTED_EXIT_CODE=$(grep -o '/\* flags: .*return: [0-9]* \*/' "$TEST" | sed -E 's/\/\* flags: .* return: ([0-9]*) \*\//\1/')
-#     # echo $EXPECTED_EXIT_CODE
+for TEST in "${TEST_FILES[@]}"; do
+    FLAGS=$(grep -o '/\* flags: .*return: [0-9]* \*/' "$TEST" | sed -E 's/\/\* flags: (.*) return: [0-9]* \*\//\1/')
+    # echo $FLAGS
+    EXPECTED_EXIT_CODE=$(grep -o '/\* flags: .*return: [0-9]* \*/' "$TEST" | sed -E 's/\/\* flags: .* return: ([0-9]*) \*\//\1/')
+    # echo $EXPECTED_EXIT_CODE
 
-#     ./build/src/tc $FLAGS "$TEST" > "$OUTPUT_FILE" 2>&1
-#     ACTUAL_EXIT_CODE=$?
+    ./build/src/tc $FLAGS "$TEST" > "$OUTPUT_FILE" 2>&1
+    ACTUAL_EXIT_CODE=$?
 
-#     if [ "$ACTUAL_EXIT_CODE" -eq "$EXPECTED_EXIT_CODE" ]; then
-#         ((PASSED++))
-#     else
-#         ((FAILED++))
-#         echo "--------------------------------------"
-#         echo -e "${RED}Test failed: $TEST${RESET}"
-#         echo -e "${BLUE}Source Code:${RESET}"
-#         cat "$TEST"
-#         echo -e "${RED}Expected exit code: $EXPECTED_EXIT_CODE, but got: $ACTUAL_EXIT_CODE${RESET}"
-#         echo -e "${RED}Error Message:${RESET}"
-#         cat "$OUTPUT_FILE"
-#     fi
-# done
+    if [ "$ACTUAL_EXIT_CODE" -eq "$EXPECTED_EXIT_CODE" ]; then
+        ((PASSED++))
+    else
+        ((FAILED++))
+        echo "--------------------------------------"
+        echo -e "${RED}Test failed: $TEST${RESET}"
+        echo -e "${BLUE}Source Code:${RESET}"
+        cat "$TEST"
+        echo -e "${RED}Expected exit code: $EXPECTED_EXIT_CODE, but got: $ACTUAL_EXIT_CODE${RESET}"
+        echo -e "${RED}Error Message:${RESET}"
+        cat "$OUTPUT_FILE"
+    fi
+done
 
 # Tests folders with readme
 TEST_FOLDERS=($(find "tests" -type f -name "README.txt" -exec dirname {} \;))
