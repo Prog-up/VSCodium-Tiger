@@ -64,7 +64,7 @@ for FOLDER in "${TEST_FOLDERS[@]}"; do
 
         if [ "$ACTUAL_EXIT_CODE" -eq "$EXPECTED_EXIT_CODE" ]; then
             if [ "$ACTUAL_EXIT_CODE" -eq 0 ]; then
-                if ./build/src/tc -X --parse - <"$OUTPUT_FILE" >/dev/null 2>&1; then
+                if ./build/src/tc -XA --parse - <"$OUTPUT_FILE" >/dev/null 2>&1; then
                     ((PASSED++))
                 else
                     ((FAILED++))
@@ -73,7 +73,7 @@ for FOLDER in "${TEST_FOLDERS[@]}"; do
                     echo -e "${BLUE}Source Code:${RESET}"
                     cat "$TEST"
                     echo -e "${RED}Error Message:${RESET}"
-                    ./build/src/tc -X --parse - <"$OUTPUT_FILE"
+                    ./build/src/tc -XA --parse - <"$OUTPUT_FILE"
                 fi
             else
                 ((PASSED++))
