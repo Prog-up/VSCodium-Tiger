@@ -58,7 +58,7 @@ for FOLDER in "${TEST_FOLDERS[@]}"; do
         elif [ "$EXPECTED_EXIT_CODE" -eq 5 ]; then
             ./build/src/tc -T "$TEST" >"$OUTPUT_FILE" 2>&1
         else
-            ./build/src/tc -X "$TEST" >"$OUTPUT_FILE" 2>&1
+            ./build/src/tc -XA "$TEST" >"$OUTPUT_FILE" 2>&1
         fi
         ACTUAL_EXIT_CODE=$?
 
